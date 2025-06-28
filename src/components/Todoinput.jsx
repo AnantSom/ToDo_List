@@ -1,28 +1,27 @@
-import React from 'react'
+import React from 'react';
 
-function Todoinput({inputval, writeTodo, addTodo}) {
-  
-  // Handle form submission with Enter key
-  function handleKeyPress(e) {
-    if (e.key === 'Enter') {
+function Todoinput({ inputval, writeTodo, addTodo }) {
+  // Function to handle Enter key press
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
       addTodo();
     }
-  }
-  
+  };
+
   return (
-    <div className='input-container'>
-      <input 
+    <div className='input-section'>
+      <input
         type="text"
-        placeholder="Add a new task..." 
-        value={inputval} 
+        value={inputval}
         onChange={writeTodo}
-        onKeyDown={handleKeyPress}
+        onKeyPress={handleKeyPress}
+        placeholder="Add a new task..."
       />
       <button onClick={addTodo}>
         Add
       </button>
     </div>
-  )
+  );
 }
 
 export default Todoinput;

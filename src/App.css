@@ -1,178 +1,127 @@
-/* Using a modern CSS reset */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* Define a color palette using CSS variables for easy management */
-:root {
-  --background-light: #F1FAEE;
-  --container-bg: #A8DADC;
-  --primary-text: #1D3557;
-  --secondary-text: #457B9D;
-  --accent-red: #E63946;
-  --white: #FFFFFF;
-}
+/* src/App.css */
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: var(--background-light);
-  color: var(--primary-text);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #eef1f5; /* Light gray-blue background */
   display: flex;
   justify-content: center;
   align-items: flex-start;
   min-height: 100vh;
-  padding: 2rem;
+  padding-top: 50px;
 }
 
-/* Main App Card */
-.app-container {
-  background-color: var(--container-bg);
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+/* The main container card */
+.todo-app {
+  background-color: #a8dadc; /* Light teal card background */
   width: 100%;
-  max-width: 600px;
+  max-width: 500px;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+.todo-app h1 {
+  color: #1d3557; /* Dark blue title */
   text-align: center;
-  color: var(--primary-text);
-  margin-bottom: 1.5rem;
+  margin-bottom: 25px;
   font-size: 2.5rem;
+  font-weight: 700;
 }
 
-/* Input Form Styling */
-.input-container {
+/* Container for input field and button */
+.input-section {
   display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
-.input-container > input {
-  flex-grow: 1;
-  border: 2px solid transparent;
-  border-radius: 8px;
-  padding: 0.75rem 1rem;
+.input-section input {
+  flex-grow: 1; /* Makes input take up available space */
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 12px 15px;
   font-size: 1rem;
-  background-color: var(--background-light);
-  transition: border-color 0.2s ease-in-out;
+  background-color: #f1faee; /* Off-white input background */
+  transition: box-shadow 0.3s;
 }
 
-.input-container > input:focus {
+.input-section input:focus {
   outline: none;
-  border-color: var(--secondary-text);
+  box-shadow: 0 0 0 3px rgba(69, 123, 157, 0.4);
 }
 
-.input-container > button {
-  background-color: var(--primary-text);
-  color: var(--white);
+.input-section button {
+  background-color: #457b9d; /* Medium blue button */
+  color: white;
   border: none;
-  border-radius: 8px;
-  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  padding: 0 25px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.3s;
 }
 
-.input-container > button:hover {
-  background-color: var(--secondary-text);
+.input-section button:hover {
+  background-color: #1d3557; /* Darker blue on hover */
 }
 
-/* Todo List Container */
-.container {
+/* The list of tasks */
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 12px;
 }
 
-/* Individual Todo Item */
-.todo {
+/* Each individual task item */
+.task-item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background-color: var(--white);
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  gap: 15px;
+  background-color: #f1faee; /* Off-white item background */
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
 }
 
-.todo.completed {
-  opacity: 0.6;
+.task-item:hover {
+    transform: translateY(-2px);
 }
 
-.todo.completed p {
-  text-decoration: line-through;
-  color: var(--secondary-text);
-}
-
-.todo-content {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.todo p {
-  font-size: 1.1rem;
-  margin: 0;
-}
-
-/* Custom Checkbox */
-.todo input[type="checkbox"] {
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: var(--background-light);
-  margin: 0;
-  font: inherit;
-  color: currentColor;
-  width: 1.5em;
-  height: 1.5em;
-  border: 0.15em solid var(--secondary-text);
-  border-radius: 0.25em;
-  transform: translateY(-0.075em);
-  display: grid;
-  place-content: center;
+.task-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 }
 
-.todo input[type="checkbox"]::before {
-  content: "";
-  width: 0.75em;
-  height: 0.75em;
-  transform: scale(0);
-  transition: 120ms transform ease-in-out;
-  box-shadow: inset 1em 1em var(--secondary-text);
-  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+.task-item p {
+  flex-grow: 1;
+  margin: 0;
+  font-size: 1.1rem;
+  color: #1d3557;
+  transition: color 0.3s, text-decoration 0.3s;
 }
 
-.todo input[type="checkbox"]:checked::before {
-  transform: scale(1);
+.task-item p.completed {
+  text-decoration: line-through;
+  color: #8d99ae; /* Gray color for completed text */
 }
 
-
-/* Action Buttons (Delete) */
-.actions {
-  display: flex;
-  align-items: center;
-}
-
-.actions .delete-btn {
+.task-item .delete-btn {
   background: none;
   border: none;
-  color: var(--secondary-text);
   cursor: pointer;
-  padding: 0.25rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.2s, color 0.2s;
+  padding: 5px;
+  color: #e63946; /* Red delete icon */
+  opacity: 0.6;
+  transition: opacity 0.3s, transform 0.3s;
 }
 
-.actions .delete-btn:hover {
-  background-color: #FEE2E2; /* Light red background */
-  color: var(--accent-red);
+.task-item .delete-btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
 }

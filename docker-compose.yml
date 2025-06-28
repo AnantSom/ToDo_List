@@ -1,0 +1,21 @@
+# docker-compose.yml
+
+version: '3.8'
+
+services:
+  # The name of our service
+  todo-list-app:
+    # A friendly name for the container
+    container_name: todo-list-container
+
+    # Build instructions
+    build:
+      # Use the current directory as the build context
+      context: .
+      # Specify the Dockerfile to use
+      dockerfile: Dockerfile
+
+    # Port mapping: <HOST_PORT>:<CONTAINER_PORT>
+    # This maps port 3001 on your machine to port 80 inside the container.
+    ports:
+      - '3001:80'
