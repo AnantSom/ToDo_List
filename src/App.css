@@ -1,52 +1,178 @@
-body{
- font-family: "Trebuchet MS","Lucida Sans Unicode","Lucida Grande",
- "Lucida Sans","Arial","sans-serif";
-  background-color: #457B9D;
+/* Using a modern CSS reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-h1{
- text-align: center;
+
+/* Define a color palette using CSS variables for easy management */
+:root {
+  --background-light: #F1FAEE;
+  --container-bg: #A8DADC;
+  --primary-text: #1D3557;
+  --secondary-text: #457B9D;
+  --accent-red: #E63946;
+  --white: #FFFFFF;
 }
-.input-container{
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--background-light);
+  color: var(--primary-text);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* Main App Card */
+.app-container {
+  background-color: var(--container-bg);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+}
+
+h1 {
+  text-align: center;
+  color: var(--primary-text);
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+}
+
+/* Input Form Styling */
+.input-container {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.input-container > input {
+  flex-grow: 1;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  background-color: var(--background-light);
+  transition: border-color 0.2s ease-in-out;
+}
+
+.input-container > input:focus {
+  outline: none;
+  border-color: var(--secondary-text);
+}
+
+.input-container > button {
+  background-color: var(--primary-text);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.input-container > button:hover {
+  background-color: var(--secondary-text);
+}
+
+/* Todo List Container */
+.container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 0.75rem;
 }
-.input-container > input{
-  width: 300px;
-  height: 30px;
-  font-size: 1.25rem;
-}
-.input-container > button{
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  font: 1.5rem;
-  background-color: #E63946;
-  margin-top: 10px;
-}
-.container{
-  margin-top: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-.todo{
-  width: 500px;
-  font-size: 1.2rem;
+
+/* Individual Todo Item */
+.todo {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-radius: 10px;
-  background-color: #F1FAEE;
-  padding: 0px 5px;
+  background-color: var(--white);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
-.actions > button{
-  background-color: #E63946;
-  color: white;
-  height: 30px;
-  width: 75px;
-  border-radius: 10px;
-  font-size: 1.05rem;
-  margin-left: 10px;
+
+.todo.completed {
+  opacity: 0.6;
+}
+
+.todo.completed p {
+  text-decoration: line-through;
+  color: var(--secondary-text);
+}
+
+.todo-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.todo p {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* Custom Checkbox */
+.todo input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--background-light);
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.5em;
+  height: 1.5em;
+  border: 0.15em solid var(--secondary-text);
+  border-radius: 0.25em;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+.todo input[type="checkbox"]::before {
+  content: "";
+  width: 0.75em;
+  height: 0.75em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--secondary-text);
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.todo input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+
+/* Action Buttons (Delete) */
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.actions .delete-btn {
+  background: none;
+  border: none;
+  color: var(--secondary-text);
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.actions .delete-btn:hover {
+  background-color: #FEE2E2; /* Light red background */
+  color: var(--accent-red);
 }
