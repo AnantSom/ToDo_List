@@ -3,10 +3,6 @@
 A clean, modern, and responsive To-Do List application built with React and Vite. This project is fully containerized with Docker for easy and consistent deployment.
 
 
-*(Suggestion: Replace the link above with a screenshot of your running application!)*
-
----
-
 ## ✨ Key Features
 
 -   **Add & Delete Tasks**: Easily add new tasks and remove them with a single click.
@@ -21,16 +17,6 @@ A clean, modern, and responsive To-Do List application built with React and Vite
 -   **Styling**: Plain CSS
 -   **Deployment**: Docker, Nginx
 
-## 🚀 Getting Started
-
-To get a local copy up and running, follow these simple steps.
-
-### Prerequisites
-
-You need to have Node.js, npm, and Docker installed on your machine.
-
--   [Node.js](https://nodejs.org/)
--   [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
 ### 💻 Running Locally (for Development)
 
