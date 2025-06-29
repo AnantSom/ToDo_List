@@ -1,4 +1,4 @@
-# Simple React To-Do List ✅
+# To-Do List ✅
 
 A clean, modern, and responsive To-Do List application built with React and Vite. This project is fully containerized with Docker for easy and consistent deployment.
 
@@ -22,7 +22,7 @@ A clean, modern, and responsive To-Do List application built with React and Vite
 
 1.  Clone the repository:
     ```sh
-    git clone https://github.com/AnantSom/ToDo_List.git
+    git clone https://github.com/AnantSom/todo-list.git
     ```
 2.  Navigate to the project directory:
     ```sh
